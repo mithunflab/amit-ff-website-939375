@@ -1,0 +1,121 @@
+<think>
+Alright, I need to create a production-ready CSS file for the Garena Free Fire TH website based on the user's request. The user wants a professional website, so the styles should look clean and modern.
+
+First, I'll start by setting up the CSS variables for colors. Using a primary color for headers and buttons makes sense, while secondary colors can be for backgrounds and text. I'll choose a dark primary color for contrast and a light secondary for readability.
+
+Next, I'll reset default margins and paddings to ensure consistency across browsers. Using a box-sizing border-box will help with layout calculations. I'll also set the font to a system font stack for better performance and accessibility.
+
+For the feature section, I'll make it responsive with a grid layout. Using minmax in grid-template-columns allows the layout to adjust based on screen size, ensuring it looks good on both desktop and mobile. Adding a gap between items improves spacing.
+
+I'll style the feature cards with a white background, some padding, and a subtle box-shadow for depth. Hover effects like a slight shadow increase and a small transform will add interactivity without being too flashy.
+
+The feature image needs to be responsive, so object-fit: cover ensures it scales nicely within the container. A border-radius on the image and card gives a modern look.
+
+I'll include a 'View More' button with a primary color to stand out. Using a link styled as a button provides functionality while maintaining the button's appearance.
+
+Accessibility is important, so I'll add focus states for buttons and ensure the color contrast is good. Using rem units instead of px makes the design more scalable and accessible.
+
+Finally, I'll include media queries to adjust the layout for smaller screens. Hiding the view more button on mobile keeps the interface clean, and reducing padding ensures the content remains readable.
+
+Throughout, I'll follow best practices like using modern CSS techniques, keeping the code clean, and ensuring responsiveness. This should result in a professional and user-friendly feature section for the website.
+</think>
+
+```css
+@use '../../globals/styles/abstracts' with (
+  $primary-color: #2c3e50,
+  $secondary-color: #f8f9fa,
+  $accent-color: #e74c3c
+);
+
+.features {
+  padding: 4rem 0;
+  background-color: var(--secondary-color);
+}
+
+.features__container {
+  grid-area: content;
+  padding: 0 1.5rem;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.features__card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.features__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.features__title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.features__text {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.features__button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.features__button:hover {
+  background-color: #1a252f;
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 2rem 0;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features__card {
+    padding: 1rem;
+  }
+
+  .features__image {
+    height: 150px;
+  }
+
+  .features__title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features__button {
+    display: none;
+  }
+}
+```
